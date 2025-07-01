@@ -1,0 +1,238 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Sohoj App</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+    }
+
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: linear-gradient(to right, #007BFF, #FF0000);
+      color: white;
+      padding: 10px 15px;
+      position: relative;
+    }
+
+    .header .title {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    .hamburger {
+      width: 30px;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .hamburger div {
+      height: 4px;
+      background: white;
+      border-radius: 2px;
+    }
+
+    .menu-items {
+      display: none;
+      flex-direction: column;
+      background: #f9f9f9;
+      padding: 10px;
+      border-top: 1px solid #ccc;
+    }
+
+    .menu-items a {
+      padding: 10px;
+      text-decoration: none;
+      color: #333;
+      border-radius: 4px;
+    }
+
+    .menu-items a:hover {
+      background-color: #ddd;
+    }
+
+    .menu-items.show {
+      display: flex;
+    }
+
+    .button-group {
+      margin: 20px auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .button-group button {
+      width: 220px;
+      padding: 12px 20px;
+      font-size: 16px;
+      border-radius: 30px;
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .button-group button:hover {
+      background-color: #0056b3;
+    }
+
+    .offers {
+      margin: 30px auto;
+      max-width: 320px;
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    .offer-item {
+      padding: 15px;
+      border-bottom: 1px solid #ddd;
+      font-size: 16px;
+    }
+
+    .offer-item:last-child {
+      border-bottom: none;
+    }
+
+    .page {
+      display: none;
+    }
+
+    .page.active {
+      display: block;
+    }
+
+    .back-btn {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .back-btn button {
+      padding: 10px 20px;
+      border-radius: 20px;
+      border: none;
+      background-color: #007BFF;
+      color: white;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Header -->
+<div class="header">
+  <div class="hamburger" onclick="toggleMenu()">
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+  <div class="title">Sohoj</div>
+</div>
+
+<!-- Menu -->
+<div class="menu-items" id="menu">
+  <a href="#">Number Change</a>
+  <a href="#">MO Transaction History</a>
+  <a href="#">Refer</a>
+  <a href="#">Support</a>
+</div>
+
+<!-- Main Page -->
+<div class="page active" id="mainPage">
+  <div class="button-group">
+    <button onclick="showPage('internetPage')">Internet Pack</button>
+    <button onclick="showPage('minutePage')">Minute Pack</button>
+    <button onclick="showPage('comboPage')">Internet + Minute Pack</button>
+    <button onclick="showPage('talkTimePage')">Talk Time</button>
+  </div>
+</div>
+
+<!-- Internet Page -->
+<div class="page" id="internetPage">
+  <div class="offers">
+    <div class="offer-item">3 GB – 30 Days @ RM 10</div>
+    <div class="offer-item">5 GB – 7 Days @ RM 3</div>
+    <div class="offer-item">20 GB – 7 Days @ RM 13</div>
+  </div>
+  <div class="back-btn">
+    <button onclick="showPage('mainPage')">Back</button>
+  </div>
+</div>
+
+<!-- Minute Pack Page -->
+<div class="page" id="minutePage">
+  <div class="offers">
+    <div class="offer-item">140 minute – 7 Days @ RM 6</div>
+    <div class="offer-item">230 minute – 7 Days @ RM 10</div>
+    <div class="offer-item">350 minute – 30 Days @ RM 15</div>
+    <div class="offer-item">580 minute – 30 Days @ RM 20</div>
+    <div class="offer-item">1550 minute @ RM 50</div>
+  </div>
+  <div class="back-btn">
+    <button onclick="showPage('mainPage')">Back</button>
+  </div>
+</div>
+
+<!-- Internet + Minute Pack Page -->
+<div class="page" id="comboPage">
+  <div class="offers">
+    <div class="offer-item">8GB + 120 minute – 7 Days @ RM 10</div>
+    <div class="offer-item">2GB + 80 minute – 30 Days @ RM 15</div>
+    <div class="offer-item">3GB + 100 minute – 30 Days @ RM 20</div>
+    <div class="offer-item">12GB + 250 minute – 30 Days @ RM 25</div>
+    <div class="offer-item">20GB + 400 minute – 30 Days @ RM 30</div>
+    <div class="offer-item">50GB + 1500 minute – 30 Days @ RM 50</div>
+  </div>
+  <div class="back-btn">
+    <button onclick="showPage('mainPage')">Back</button>
+  </div>
+</div>
+
+<!-- Talk Time Page -->
+<div class="page" id="talkTimePage">
+  <div class="offers">
+    <div class="offer-item">20 tk @ RM 1</div>
+    <div class="offer-item">40 tk @ RM 2</div>
+    <div class="offer-item">100 tk @ RM 5</div>
+    <div class="offer-item">200 tk @ RM 10</div>
+    <div class="offer-item">300 tk @ RM 15</div>
+    <div class="offer-item">500 tk @ RM 25</div>
+    <div class="offer-item">1000 tk @ RM 50</div>
+    <div class="offer-item">2000 tk @ RM 100</div>
+  </div>
+  <div class="back-btn">
+    <button onclick="showPage('mainPage')">Back</button>
+  </div>
+</div>
+
+<script>
+  function toggleMenu() {
+    document.getElementById('menu').classList.toggle('show');
+  }
+
+  function showPage(pageId) {
+    document.querySelectorAll('.page').forEach(page => {
+      page.classList.remove('active');
+    });
+    document.getElementById(pageId).classList.add('active');
+    document.getElementById('menu').classList.remove('show');
+  }
+</script>
+
+</body>
+</html>
