@@ -174,7 +174,6 @@
   </style>
 </head>
 <body>
-  <!-- Header -->
   <div class="header">
     <div class="hamburger" onclick="toggleMenu()">
       <div></div>
@@ -184,14 +183,12 @@
     <div class="title">Probashi Cash</div>
   </div>
 
-  <!-- Menu -->
   <div class="menu-items" id="menu">
     <a href="#">Transaction History</a>
     <a href="#">Refer Friend</a>
     <a href="#">Support</a>
   </div>
 
-  <!-- Main Page -->
   <div class="page active" id="mainPage">
     <div class="button-group">
       <button onclick="showPage('internetPage')">Internet Pack</button>
@@ -201,7 +198,6 @@
     </div>
   </div>
 
-  <!-- Common inputs for all pack pages -->
   <div class="input-group" id="inputGroup" style="display:none;">
     <label for="phone">Phone Number</label>
     <input type="tel" id="phone" placeholder="Enter phone number" />
@@ -215,7 +211,6 @@
     </div>
   </div>
 
-  <!-- Internet Page -->
   <div class="page" id="internetPage">
     <div class="offers">
       <div class="offer-item" onclick="selectOffer(this)">3 GB – 30 Days @ RM 10</div>
@@ -232,7 +227,6 @@
     </div>
   </div>
 
-  <!-- Minute Pack Page -->
   <div class="page" id="minutePage">
     <div class="offers">
       <div class="offer-item" onclick="selectOffer(this)">140 minute – 7 Days @ RM 6</div>
@@ -251,7 +245,6 @@
     </div>
   </div>
 
-  <!-- Combo Page -->
   <div class="page" id="comboPage">
     <div class="offers">
       <div class="offer-item" onclick="selectOffer(this)">8GB + 120 minute – 7 Days @ RM 10</div>
@@ -271,7 +264,6 @@
     </div>
   </div>
 
-  <!-- Talk Time Page -->
   <div class="page" id="talkTimePage">
     <div class="offers">
       <div class="offer-item" onclick="selectOffer(this)">20 tk @ RM 1</div>
@@ -351,15 +343,16 @@
       alert('Please select a pack from the list.');
       return;
     }
-    const operatorName = operatorEl.value;
+    const operatorValue = operatorEl.value;
     const data = {
-      phone,
-      operatorName,
-      packName: selectedOfferText
+      phone: phone,
+      operator: operatorValue, // Corrected key to 'operator'
+      pack: selectedOfferText   // Corrected key to 'pack'
     };
 
-    // Replace with your Apps Script URL:
-    const url = 'https://script.google.com/macros/s/AKfycbzQGFkaedBJpXRVV3gbdWSmNBduOxczz00lqvGJVtbl1mMoGVDVojqGIZQxRlnTgYve/exec';
+    // THIS IS THE CRUCIAL LINE TO UPDATE
+    // USE THE LATEST, CORRECT URL FROM YOUR APPS SCRIPT DEPLOYMENT
+    const url = 'https://script.google.com/macros/s/AKfycbwYlJqy0Ceg0Jjt4e5Pcy9AttciAevqoryKlOcvQciat6Y7Y8RKBlNq4NfQnTzgDvkU/exec'; 
 
     try {
       const response = await fetch(url, {
@@ -370,15 +363,18 @@
         },
         body: JSON.stringify(data)
       });
-      if (response.ok) {
+      const result = await response.json(); // Parse the JSON response from Apps Script
+      if (response.ok && result.result === "success") {
         alert('Data sent successfully!');
         showPage('mainPage'); // back to main page after submit
       } else {
-        alert('Error sending data.');
+        // If there's an error from the Apps Script, it will be in result.message
+        alert('Error sending data: ' + (result.message || 'Unknown error from server'));
+        console.error('Apps Script Response Error:', result);
       }
     } catch (error) {
-      alert('Error sending data.');
-      console.error(error);
+      alert('Network Error: Could not connect to the server or unexpected response.');
+      console.error('Fetch Error:', error);
     }
   }
 </script>
